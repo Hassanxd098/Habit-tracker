@@ -3,9 +3,6 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { ScanFace } from "lucide-react";
-import { auth, googleProvider } from "../firebase";
-import { signInWithPopup } from "firebase/auth";
-
 
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
@@ -14,19 +11,7 @@ const Login = ({ onLogin }) => {
   const navigate = useNavigate();
 
   // 🔹 Google Login
-  const handleGoogleLogin = async () => {
-    try {
-      const result = await signInWithPopup(auth, googleProvider);
-      const user = result.user;
-      if (typeof onLogin === "function") {
-        onLogin(user.email);
-      }
-      navigate("/dashboard");
-    } catch (error) {
-      console.error("Google login failed:", error.message);
-      alert("Google login failed!");
-    }
-  };
+  const handleGoogleLogin = async () => {};
 
   // 🔹 Dummy Email/Password (optional: replace with Firebase Auth later)
   const handleSubmit = (e) => {

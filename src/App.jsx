@@ -7,19 +7,9 @@ import Layout from "./Component/Layout";
 import Login from "./Login/Login";
 import { useEffect, useState } from "react";
 import Settings from "./pages/Settings";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase";
-
 
 const App = () => {
   const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-    return () => unsubscribe();
-  }, []);
 
   return (
     <div className="min-h-screen">
